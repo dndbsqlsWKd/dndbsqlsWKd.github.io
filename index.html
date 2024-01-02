@@ -1,0 +1,196 @@
+<!DOCTYPE html> <html lang="en">
+<head>
+<meta charset= "UTF-8" />
+<meta http-equiv= "X-UA-Compatible" content = "IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" /> 
+<title>scrolltrigger  gallery</title> 
+<link rel="stylesheet" href="style.css"/>
+<script src="https://unpkg.co/gsap@3/dist/gsap.min.js"></script> 
+<script src="https://unpkg.com/gsap@3/dist/ScrollTrigger.min.js"></script> 
+<script src="https://unpkg.com/gsap@3/dist/MotionPathPlugin.min.js"></script> 
+<script src="https://assets.codepen.io/16327/Flip.min.js"></script>
+</head>
+<body>
+  <div class="header">
+ <h1>우리의 2023, <br />
+    함께해줘서 고마워 <br /> 2024도 함께해줘!
+ </h1>
+  </div>
+  <section class="slider-section">
+   <div class="wheel"> 
+    <div class="wheel__card">
+        <img src="./img/img42.JPG" alt="" />
+    </div>
+    <div class="wheel__card">
+        <img src="./img/img41.JPG" alt="" />
+    </div>
+    <div class="wheel__card">
+        <img src="./img/img40.JPG" alt="" />
+    </div>
+    <div class="wheel__card">
+        <img src="./img/img39.JPG" alt="" />
+    </div>
+    <div class="wheel__card">
+        <img src="./img/img38.JPG" alt="" />
+    </div>
+    <div class="wheel__card">
+        <img src="./img/img37.JPG" alt="" />
+    </div>  
+    <div class="wheel__card">
+        <img src="./img/img36.JPG" alt="" />
+    </div>
+    <div class="wheel__card">
+        <img src="./img/img35.JPG" alt="" />
+    </div>
+    <div class="wheel__card">
+        <img src="./img/img34.JPG" alt="" />
+    </div>
+    <div class="wheel__card">
+        <img src="./img/img32.JPG" alt="" />
+    </div>
+    <div class="wheel__card">
+        <img src="./img/img31.JPG" alt="" />
+    </div>
+    <div class="wheel__card">
+        <img src="./img/img30.JPG" alt="" />
+    </div>
+    <div class="wheel__card">
+        <img src="./img/img29.JPG" alt="" />
+    </div>
+    <div class="wheel__card">
+        <img src="./img/img28.JPG" alt="" />
+    </div>
+    <div class="wheel__card">
+        <img src="./img/img27.JPG" alt="" />
+    </div>  
+    <div class="wheel__card">
+        <img src="./img/img26.JPG" alt="" />
+    </div>
+    <div class="wheel__card">
+        <img src="./img/img25.JPG" alt="" />
+    </div>
+    <div class="wheel__card">
+        <img src="./img/img24.JPG" alt="" />
+    </div>
+    <div class="wheel__card">
+        <img src="./img/img23.JPG" alt="" />
+    </div>
+    <div class="wheel__card">
+        <img src="./img/img22.JPG" alt="" />
+    </div>
+    <div class="wheel__card">
+        <img src="./img/img21.JPG" alt="" />
+    </div>
+    <div class="wheel__card">
+        <img src="./img/img20.JPG" alt="" />
+    </div>
+    <div class="wheel__card">
+        <img src="./img/img19.JPG" alt="" />
+    </div>
+    <div class="wheel__card">
+        <img src="./img/img18.JPG" alt="" />
+    </div>
+    <div class="wheel__card">
+        <img src="./img/img17.JPG" alt="" />
+    </div>
+    <div class="wheel__card">
+        <img src="./img/img16.JPG" alt="" />
+    </div>
+    <div class="wheel__card">
+        <img src="./img/img15.JPG" alt="" />
+    </div>
+    <div class="wheel__card">
+        <img src="./img/img14.JPG" alt="" />
+    </div>
+    <div class="wheel__card">
+        <img src="./img/img13.JPG" alt="" />
+    </div>
+    <div class="wheel__card">
+        <img src="./img/img12.JPG" alt="" />
+    </div>
+    <div class="wheel__card">
+        <img src="./img/img11.JPG" alt="" />
+    </div>
+    <div class="wheel__card">
+        <img src="./img/img10.JPG" alt="" />
+    </div>
+    <div class="wheel__card">
+        <img src="./img/img9.JPG" alt="" />
+    </div>
+    <div class="wheel__card">
+        <img src="./img/img8.JPG" alt="" />
+    </div>
+    <div class="wheel__card">
+        <img src="./img/img7.JPG" alt="" />
+    </div>
+    <div class="wheel__card">
+        <img src="./img/img6.JPG" alt="" />
+    </div>
+    <div class="wheel__card">
+        <img src="./img/img5.JPG" alt="" />
+    </div>
+    <div class="wheel__card">
+        <img src="./img/img4.JPG" alt="" />
+    </div>
+    <div class="wheel__card">
+        <img src="./img/img3.JPG" alt="" />
+    </div>
+    <div class="wheel__card">
+        <img src="./img/img2.JPG" alt="" />
+    </div>
+    <div class="wheel__card">
+        <img src="./img/img1.JPG" alt="" />
+    </div>
+  <div>
+ </section>
+ <div class="scroll-down">Scroll down</div>
+ <div class="scroll-down-icon">
+  <img src="./img/free-icon-down-arrow-4561392.png" alt="">
+ </div>
+
+ <script>
+    gsap.registerPlugin("ScrollTrigger");
+
+    let wheel = document.querySelector(".wheel");
+    let images = gsap.utils.toArray(".wheel__card img");
+
+    function setup() {
+        let radius = wheel.offsetWidth / 2;
+        let center = wheel.offsetWidth / 2;
+        let total = images.length;
+        let slice = (2 * Math.PI) / total;
+
+        images.forEach((item, i) => {
+            let angle = i * slice;
+            let x = center + radius * Math.sin(angle);
+            let y = center + radius * Math.cos(angle);
+
+            gsap.set(item, {
+                rotation: angle + "-rad",
+                xPercent: -50,
+                yPercent: -50,
+                x: x,  // Use lowercase 'x'
+                y: y,  // Use lowercase 'y'
+                
+            });
+        });
+    }
+
+    gsap.to(".wheel", {
+        rotation: () => -360,
+        ease: "none",
+        duration: images.length,
+        scrollTrigger: {
+            start: 0,
+            end: "max",
+            scrub: 1,
+            snap: 1 / images.length,
+            invalidateOnRefresh: true,
+        }
+    });
+
+    setup();
+    window.addEventListener("resize", setup);
+ </script>
+</body>
+</html>
